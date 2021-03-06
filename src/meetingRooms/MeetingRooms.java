@@ -1,5 +1,8 @@
 package meetingRooms;
 
+import java.util.Arrays;
+import java.util.Comparator;
+
 class Interval{
     int start;
     int end;
@@ -27,13 +30,30 @@ public class MeetingRooms {
     }
 
     public boolean solve(Interval[] intervals) {
-
+        //1
         if(intervals == null){
             return false;
         }
         print(intervals);
+        Arrays.sort(intervals, comp);
+        System.out.println("=========================");
+        print(intervals);
+
+        //2
+        for(int i=1; i<intervals.length; i++){
+            if(intervals[i-1].end > intervals[i].start){
+                return false;
+            }
+        }
         return true;
     }
+
+    Comparator<Interval> comp = new Comparator<Interval>() {
+        @Override
+        public int compare(Interval o1, Interval o2) {
+            return o1.start - o2.start;
+        }
+    };
 
     public void print(Interval[] intervals){
         for (Interval interval : intervals) {
