@@ -1,7 +1,7 @@
 package Programmers;
 
 import java.util.*;
-
+    
 public class 스킬트리 {
 
     public static void main(String[] args){
