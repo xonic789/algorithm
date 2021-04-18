@@ -21,36 +21,33 @@ public class 격자판최대합 {
     }
 
     private static int solution(int n, int[][] input) {
-        int answer = 0;
-        int max = 0;
-        int[] tmpArr = new int[n-1];
+        int answer = Integer.MIN_VALUE;
+        int sum1, sum2;
         for (int i=0; i<n; i++){
+            sum1=sum2=0;
             for (int j=0; j<n; j++){
-                int temp = 5;
-                max+=input[i][j];
-
-                tmpArr[1][i]+=input[j][i];
-                tmpArr[2][i]+=input[j][j];
-                tmpArr[3][i]+=input[i][--temp];
+                sum1+=input[i][j];
+                sum2+=input[j][i];
             }
-            for (int j=0; j<n; j++){
-
+            if (sum1>answer){
+                answer=sum1;
+            }
+            if (sum2>answer){
+                answer=sum2;
             }
         }
-        for(int[] arr : tmpArr){
-            for (int x : arr){
-                System.out.print(x + " ");
-            }
-            System.out.println();
+        sum1=sum2=0;
+        for (int i=0; i<n; i++){
+            sum1+=input[i][i];
+            sum2+=input[i][n-i-1];
+        }
+        if (sum1>answer){
+            answer=sum1;
+        }
+        if (sum2>answer){
+            answer=sum2;
         }
 
-        return answer;
-    }
-
-    private static int getAnswer(int answer, int max) {
-        if (max > answer) {
-            answer = max;
-        }
         return answer;
     }
 }
