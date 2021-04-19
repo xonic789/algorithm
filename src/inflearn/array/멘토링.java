@@ -6,7 +6,32 @@ public class 멘토링 {
 
     static int solution(int n, int m, int[][] input){
         int answer = 0;
-        
+        int[] students = new int[n];
+
+        for (int i=1; i<=n; i++){
+            for (int j=1; j<=n; j++){
+                int positionI = 0;
+                int positionJ = 0;
+                int cnt = 0;
+                for (int k=0;  k<m; k++){
+                    for (int s=0; s<n; s++){
+                        if(input[k][s]==i){
+                            positionI = s;
+                        }
+                        if (input[k][s]==j){
+                            positionJ = s;
+                        }
+                    }
+                    if (positionI>positionJ){
+                        cnt++;
+                    }
+                }
+                if (cnt == m){
+                    answer++;
+                }
+            }
+
+        }
 
 
         return answer;
