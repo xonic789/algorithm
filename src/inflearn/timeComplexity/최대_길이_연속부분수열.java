@@ -19,7 +19,7 @@ public class 최대_길이_연속부분수열 {
             if(k==0&&input[pointer]==0){
                 pointer=++i;
                 answer=0;
-            }
+            } 
         }
 
         return answer;
