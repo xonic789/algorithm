@@ -34,6 +34,25 @@ public class 연속부분수열 {
             input[i] = sc.nextInt();
         }
 
-        System.out.println(solution(n,m,input));
+        System.out.println(extension(n,m,input));
+    }
+
+    static int extension(int n, int m, int[] input){
+        int answer = 0;
+        int lt=0;
+        int sum=0;
+        for (int rt=0; rt<n; rt++){
+            sum+=input[rt];
+            if(sum==m) answer++;
+            while (sum>=m){
+                sum-=input[lt++];
+                if (sum==m){
+                    answer++;
+                }
+            }
+        }
+
+
+        return answer;
     }
 }
